@@ -1,0 +1,9 @@
+{
+    "database": {
+        "host": "eden.iami",
+        "database": "the_past",
+        "port": 5432,
+        "user": "postgres",
+        "password": "postgres"
+    }
+}

@@ -1,0 +1,7 @@
+.color-rect {
+    width: 20px;
+    height: 20px;
+    border: 2px;
+    border-style: solid;
+    border-color: black;
+}
