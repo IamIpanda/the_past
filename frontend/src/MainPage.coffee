@@ -14,10 +14,10 @@ class MainPage extends Component
         <Layout style={{ minHeight: '100vh' }}>
             <Sider collapsible >
                 <div style={{ height: '32px', margin: '16px' }}></div>
-                <LeftMenu />
+                <LeftMenu onEventChange={() => @refs.panel.refreshCalender()} />
             </Sider>
             <Layout>
-                <RightPanel />
+                <RightPanel ref="panel" />
             </Layout>
         </Layout>
 

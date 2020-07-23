@@ -12,7 +12,8 @@ api_router.get '/', (ctx) ->
 
 api_router.use authorization
 api_router.use (ctx, next) ->
-    ctx.set 'Access-Control-Allow-Origin', '*'
+    #ctx.set 'Access-Control-Allow-Origin', '*'
+    #ctx.set 'Access-Control-Allow-Credentials', 'true'
     next()
 
 for file_name in fs.readdirSync './routers'
