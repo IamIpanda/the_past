@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { Layout, Menu } from 'antd';
 import 'antd/dist/antd.css';
+import {
+    TagOutlined,
+    PlusOutlined
+} from '@ant-design/icons'
 import FieldModal from './modal_field'
 import config from '../config.json'
 import './menu.css'
@@ -61,11 +65,12 @@ class LeftMenu extends Component
             <Menu.SubMenu title="事件" key='events'>
                 { @state.fields.map (field) => <Menu.Item>
                     <div>
+                        <TagOutlined /> 
                         <span onDoubleClick={@clickEditFields.bind(this, field)}>{ field.name }</span>
                         <span className='color-rect' style={{background: field.color}}></span>
                     </div>
                 </Menu.Item> }
-                <Menu.Item key="add" onClick={@clickAddFields.bind(this)}>添加...</Menu.Item>
+                <Menu.Item key="add" onClick={@clickAddFields.bind(this)}><PlusOutlined />添加...</Menu.Item>
                 <FieldModal ref='add_field_modal' visible={@state.showFieldModal} onOK={@confirmAddFields.bind(this)} onCancel={@cancelAddFields.bind(this)} onDelete={@deleteFields.bind(this)} />
             </Menu.SubMenu>
         </Menu>
