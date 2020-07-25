@@ -1,0 +1,32 @@
+kind: pipeline
+type: docker
+name: default
+
+steps:
+- name: build image
+  image: plugins/docker
+  settings:
+    username: iami
+    password: yabadun
+    registry: atlas.iami:5000 
+    cache_from: atlas.iami:5000/the_past
+    insecure: true
+    mirror: https://n982qycn.mirror.aliyuncs.com
+- name: deploy image
+  image: docker/compose
+  volumes:
+  - name: docker_sock
+    path: /var/run/docker.sock
+  - name: docker_compose
+    path: /home/docker
+  commands:
+  - ls -la /home/docker
+  - docker-compose -f /home/docker/live/docker-compose.yaml pull the_past 
+  - docker-compose -f /home/docker/live/docker-compose.yaml up -d the_past
+volumes:
+  - name: docker_sock
+    host:
+      path: /var/run/docker.sock
+  - name: docker_compose
+    host:
+      path: /home/iami/docker

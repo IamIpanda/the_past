@@ -4,7 +4,7 @@ RUN npm install
 COPY frontend .
 RUN npm run-script build
 
-FROM node
+FROM node:lts-alpine3.12
 WORKDIR /home/iami/app/the_past
 COPY backend/package* backend/
 RUN cd backend && npm install
