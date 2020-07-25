@@ -1,7 +1,6 @@
 FROM node AS frontend
-COPY frontend/package* ./
-RUN npm install
 COPY frontend .
+RUN npm install
 RUN npm run-script build
 
 FROM node:lts-alpine3.12
