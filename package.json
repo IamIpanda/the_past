@@ -1,14 +1,15 @@
 {
-  "name": "my_proxy",
-  "version": "1.0.0",
-  "description": "A easy component to switch proxy",
-  "main": "index.js",
+  "name": "the_past",
+  "version": "0.1.0",
+  "description": "A simple app to record what you did.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "cd backend && npm start"
   },
   "author": "IamI",
   "license": "ISC",
   "dependencies": {
-    "coffeescript": "^2.5.1"
+    "backend": "file:backend",
+    "coffeescript": "^2.5.1",
+    "frontend": "file:frontend"
   }
 }

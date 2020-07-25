@@ -32,8 +32,9 @@ class EventModal extends Component
         <Modal
             visible={@props.visible}
             title="事件"
-            onOk={@handleOk}
-            onCancel={@handleCancel}
+            destroyOnClose
+            onOk={@props.onOK}
+            onCancel={@props.onCancel}
             footer={[
                 <Button key="cancel" onClick={@props.onCancel}>
                     取消

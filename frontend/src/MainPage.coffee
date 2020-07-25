@@ -13,15 +13,17 @@ import "./MainPage.css"
 class MainPage extends Component
     constructor: (props) ->
         super props
+        @state = 
+            collapsed: false
 
     render: ->
         <Layout style={{ minHeight: '100vh' }}>
-            <Sider collapsible >
+            <Sider ref="sider" collapsible onCollapse={(collapsed) => @setState({ collapsed })} >
                 <h2 className="logo">
                     <BookOutlined />
-                    &nbsp;&nbsp;The Past
+                    { if @state.collapsed then null else <span>&nbsp;&nbsp;The Past</span> }
                 </h2>
-                <LeftMenu onEventChange={() => @refs.panel.refreshCalender()} />
+                <LeftMenu onEventChange={(key) => @refs.panel.refreshCalender(key)} />
             </Sider>
             <Layout>
                 <RightPanel ref="panel" />

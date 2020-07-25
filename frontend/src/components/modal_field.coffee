@@ -30,8 +30,9 @@ class FieldModal extends Component
         <Modal
             visible={@props.visible}
             title="添加事件"
-            onOk={this.handleOk}
-            onCancel={this.handleCancel}
+            destroyOnClose
+            onOk={@props.onOK}
+            onCancel={@props.onCancel}
             footer={[
                 <Button key="cancel" onClick={@props.onCancel}>
                     取消

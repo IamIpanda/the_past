@@ -94,8 +94,9 @@ class Calender extends Component
         date = date.format 'YYYY-MM-DD'
         return null unless @state.events[date]
         <div> {
-            @state.events[date].map (data) =>
-                <Event event={data.field} color={@state.colors[data.field]} onDoubleClick={this.onEventClick.bind(this, data)} />
+            @state.events[date]
+                .filter (data) => if @props.fields and @props.fields.length > 0 then return @props.fields.indexOf(data.field) >= 0 else return true
+                .map (data) => <Event event={data.field} color={@state.colors[data.field]} onDoubleClick={this.onEventClick.bind(this, data)} />
         } </div>
 
     render: ->
@@ -104,4 +105,6 @@ class Calender extends Component
             <EventModal ref="modal" visible={@state.showModal} fields={Object.keys(@state.colors)} onOK={@confirmAddEvent.bind(this)} onCancel={@cancelEvent.bind(this)} onDelete={@deleteEvent.bind(this)}/> 
         </div>
 
+Calender.defaultProps = 
+    events: null
 export default Calender

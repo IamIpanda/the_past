@@ -3,6 +3,7 @@ import { Layout, Menu } from 'antd';
 import 'antd/dist/antd.css';
 import {
     TagOutlined,
+    TagsOutlined,
     PlusOutlined
 } from '@ant-design/icons'
 import FieldModal from './modal_field'
@@ -14,6 +15,7 @@ class LeftMenu extends Component
         super props
         @state = 
             fields: []
+            selectedFields: []
             showFieldModal: false
 
     componentDidMount: ->
@@ -60,10 +62,20 @@ class LeftMenu extends Component
         @setState { showFieldModal: false }, @fetchFields.bind(this)
         @forceUpdate()
 
+    triggerChange: (e) ->
+        @props.onEventChange e.selectedKeys
+
     render: ->
-        <Menu theme='dark' mode='inline' style={{ background: '#141414' }} defaultOpenKeys={['events']}>
-            <Menu.SubMenu title="事件" key='events'>
-                { @state.fields.map (field) => <Menu.Item>
+        <Menu ref="menu"
+              theme='dark'
+              mode='inline' 
+              style={{ background: '#141414' }} 
+              defaultOpenKeys={['events']} 
+              multiple
+              onSelect={@triggerChange.bind(this)}
+              onDeselect={@triggerChange.bind(this)}>
+            <Menu.SubMenu title="事件" key='events' icon={<TagsOutlined />}>
+                { @state.fields.map (field) => <Menu.Item key={field.name}>
                     <div>
                         <TagOutlined /> 
                         <span onDoubleClick={@clickEditFields.bind(this, field)}>{ field.name }</span>

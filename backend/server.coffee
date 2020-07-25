@@ -2,6 +2,7 @@ fs = require 'fs'
 path = require 'path'
 koa = require 'koa'
 koa_router = require 'koa-router'
+koa_static = require 'koa-static'
 authorization = require './authorization'
 
 app = new koa()
@@ -25,6 +26,7 @@ for file_name in fs.readdirSync './routers'
 
 main_router.use '/api', api_router.routes()
 app.use main_router.routes()
+app.use koa_static 'static'
 
 app.listen 40000
 

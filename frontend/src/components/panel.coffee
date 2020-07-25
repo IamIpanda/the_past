@@ -5,13 +5,16 @@ import Calender from './calender'
 class RightPanel extends Component
     constructor: (props) ->
         super props
+        @state = 
+            fields: []
 
-    refreshCalender: ->
+    refreshCalender: (fields) ->
         @refs.calender.fetchColors()
         @refs.calender.onPanelChange @refs.calender.state.date, 'month' 
+        @setState { fields } if fields
 
     render: ->
-        <Calender ref="calender" />
+        <Calender ref="calender" fields={@state.fields} />
 
 
 export default RightPanel

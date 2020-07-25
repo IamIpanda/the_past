@@ -13,7 +13,6 @@ class Calender extends Component
         month = @props.month
         start_date = moment(month).date(1).day(0)
         end_date   = moment(month).add(1, 'months').date(1).subtract(1, 'days').day(6)
-        console.log(month, start_date, end_date)
         dates = []
         date = start_date
         while date.isBefore end_date
