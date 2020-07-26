@@ -7,7 +7,7 @@ import {
     PlusOutlined
 } from '@ant-design/icons'
 import FieldModal from './modal_field'
-import config from '../config.json'
+import config from '../config'
 import './menu.css'
 
 class LeftMenu extends Component

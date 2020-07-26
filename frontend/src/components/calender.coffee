@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Calendar } from 'antd'
 import Event from './event'
 import EventModal from './modal_event'
-config = require '../config.json'
+config = require '../config'
 
 import moment from 'moment';
 import 'moment/locale/zh-cn';
@@ -31,9 +31,10 @@ class Calender extends Component
             colors: colors
 
     fetchEventData: (start_date, end_date) ->
-        url = new URL config.server_path + "/event"
-        url.searchParams.append 'start_date', start_date
-        url.searchParams.append 'end_date',   end_date
+        searchParams = new URLSearchParams()
+        searchParams.append 'start_date', start_date
+        searchParams.append 'end_date',   end_date
+        url = config.server_path + "/event?" + searchParams.toString();
         response = await fetch url.toString()
         json = await response.json()
         events = {}

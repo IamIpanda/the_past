@@ -28,6 +28,6 @@ main_router.use '/api', api_router.routes()
 app.use main_router.routes()
 app.use koa_static 'static'
 
-app.listen 40000
+app.listen 50000
 
 console.log "Server has started."

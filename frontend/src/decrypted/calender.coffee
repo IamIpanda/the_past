@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import moment from 'moment'
 import DateRect from './dateRect'
 import Event from './event'
-import config from '../config.json'
+import config from '../config'
 import './calender.css'
 
 class Calender extends Component
