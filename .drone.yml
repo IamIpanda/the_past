@@ -8,7 +8,8 @@ steps:
   settings:
     username: iami
     password: yabadun
-    registry: atlas.iami:5000 
+    registry: atlas.iami:5000
+    repo: atlas.iami:5000/the_past
     cache_from: atlas.iami:5000/the_past
     insecure: true
     mirror: https://n982qycn.mirror.aliyuncs.com
