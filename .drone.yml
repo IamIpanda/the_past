@@ -7,7 +7,8 @@ steps:
   image: plugins/docker
   settings:
     username: iami
-    password: yabadun
+    password: 
+      from_secret: registry_password
     registry: atlas.iami:5000
     repo: atlas.iami:5000/the_past
     cache_from: atlas.iami:5000/the_past
@@ -24,6 +25,12 @@ steps:
   - ls -la /home/docker
   - docker-compose -f /home/docker/live/docker-compose.yaml pull the_past 
   - docker-compose -f /home/docker/live/docker-compose.yaml up -d the_past
+- name: Notification
+  image: atlas.iami:5000/drone_notification_bot
+  when:
+    status:
+    - failure
+    - success
 volumes:
   - name: docker_sock
     host:
