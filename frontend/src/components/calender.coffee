@@ -97,7 +97,7 @@ class Calender extends Component
         <div> {
             @state.events[date]
                 .filter (data) => if @props.fields and @props.fields.length > 0 then return @props.fields.indexOf(data.field) >= 0 else return true
-                .map (data) => <Event event={data.field} color={@state.colors[data.field]} onDoubleClick={this.onEventClick.bind(this, data)} />
+                .map (data) => <Event event={data} color={@state.colors[data.field]} onDoubleClick={this.onEventClick.bind(this, data)} />
         } </div>
 
     render: ->

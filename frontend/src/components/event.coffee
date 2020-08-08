@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Popover } from 'antd'
 import './event.css'
 
 class Event extends Component
@@ -7,7 +8,14 @@ class Event extends Component
 
     render: ->
         <div className='event' style={{ 'background-color': this.props.color }} onDoubleClick={this.props.onDoubleClick}>
-            {@props.event}
+            {
+                if @props.event.note
+                    <Popover placement='top' trigger='hover' content={@props.event.note}>
+                        {@props.event.field}
+                    </Popover>
+                else
+                    <div>{@props.event.field}</div>
+            }
         </div>
 
 Event.defaultProps = 

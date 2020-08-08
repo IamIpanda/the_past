@@ -58,6 +58,12 @@ class EventModal extends Component
                 <Form.Item label="备注">
                     <Input.TextArea ref='notes' placeholder="备注" value={@state.event.note} onChange={@onNoteChange.bind(this)} />
                 </Form.Item>
+                {
+                    if @state.event.id > 0
+                        <div>此事件记录于 {moment(@state.event.time).format('YYYY-MM-DD HH:mm:ss')} </div>
+                    else
+                        null
+                }
             </Form>
         </Modal>
 
